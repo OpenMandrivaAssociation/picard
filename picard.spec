@@ -1,6 +1,6 @@
 %define name picard
 %define version 0.7.2
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary: Musicbrainz Tagger
 Name: %{name}
@@ -15,7 +15,7 @@ BuildRequires: python-devel
 BuildRequires: desktop-file-utils
 Requires: python-tunepimp
 Requires: python-musicbrainz2
-Requires: wxPythonGTK 
+Requires: wxpython2.6
 Requires: tunepimp-plugins
 BuildArch: noarch
 
