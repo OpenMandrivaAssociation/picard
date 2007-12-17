@@ -10,7 +10,6 @@ Source0: https://helixcommunity.org/frs/download.php/2252/%{name}-%{version}.tar
 License: GPL
 Group: Sound
 Url: http://musicbrainz.org/doc/PicardTagger
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: python-devel
 BuildRequires: desktop-file-utils
 Requires: python-tunepimp
