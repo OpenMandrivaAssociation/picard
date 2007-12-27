@@ -1,6 +1,6 @@
 %define name picard
-%define version 0.7.2
-%define release %mkrel 3
+%define version 0.9.0
+%define release %mkrel 1
 
 Summary: Musicbrainz Tagger
 Name: %{name}
