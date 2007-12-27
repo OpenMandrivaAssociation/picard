@@ -1,7 +1,7 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
 Version:	0.9.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		Sound
 License:	GPLv2+
 Url:		http://musicbrainz.org/doc/PicardTagger
@@ -30,11 +30,11 @@ Source18:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackINFO3.py
 %py_requires -d
 BuildRequires:	gettext
 BuildRequires:	desktop-file-utils
-BuildRequires:	python-qt4 >= 4.3
+BuildRequires:	python-qt4-core >= 4.3
 BuildRequires:	mutagen > 1.9
 BuildRequires:	libofa-devel
 BuildRequires:	libexpat-devel
-Requires:	python-qt4 >= 4.3
+Requires:	python-qt4-core >= 4.3
 Requires:	mutagen > 1.9
 Requires:	libdiscid
 
