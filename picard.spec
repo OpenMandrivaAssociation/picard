@@ -1,7 +1,7 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
 Version:	0.9.0
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		Sound
 License:	GPLv2+
 Url:		http://musicbrainz.org/doc/PicardTagger
@@ -35,7 +35,12 @@ BuildRequires:	python-qt4-core >= 4.3
 BuildRequires:	mutagen > 1.9
 BuildRequires:	libofa-devel
 BuildRequires:	libexpat-devel
+BuildRequires:	libffmpeg-devel
 Requires:	python-qt4-core >= 4.3
+Requires:	python-qt4-gui >= 4.3
+Requires:	python-qt4-network >= 4.3
+Requires:	python-qt4-xml >= 4.3
+Requires:	python-sip
 Requires:	mutagen > 1.9
 Requires:	libdiscid
 
