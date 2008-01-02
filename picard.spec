@@ -1,7 +1,7 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
 Version:	0.9.0
-Release:	%mkrel 4
+Release:	%mkrel 5
 Group:		Sound
 License:	GPLv2+
 Url:		http://musicbrainz.org/doc/PicardTagger
