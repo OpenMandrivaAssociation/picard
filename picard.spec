@@ -3,6 +3,7 @@ Name:		picard
 Version:	0.9.0
 Release:	%mkrel 5
 Group:		Sound
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
 Url:		http://musicbrainz.org/doc/PicardTagger
 Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/picard/%{name}-%{version}.tar.bz2
