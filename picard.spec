@@ -1,7 +1,7 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
 Version:	0.9.0
-Release:	%mkrel 5
+Release:	%mkrel 6
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
@@ -56,7 +56,7 @@ track-oriented.
 
 %build
 env %{__python} setup.py config
-env CFLAGS="%{optflags}" %{__python} setup.py build
+env CFLAGS="%{optflags} -I%_includedir/libavcodec -I%_includedir/libavformat" %{__python} setup.py build
 
 # (tpg) it fails for now
 #%check
