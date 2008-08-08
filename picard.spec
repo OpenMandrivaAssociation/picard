@@ -1,12 +1,12 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
-Version:	0.9.0
-Release:	%mkrel 6
+Version:	0.10
+Release:	%mkrel 1
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
 Url:		http://musicbrainz.org/doc/PicardTagger
-Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/picard/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/picard/%{name}-%{version}.tar.gz
 
 # plugins
 Source1:	http://users.musicbrainz.org/~luks/picard-qt/plugins/discnumber.py
@@ -17,23 +17,24 @@ Source4:	http://dispuut-ivv.nl/~jan/bonusdisc.py
 Source5:	lastfm.tar.bz2
 
 # search plugins
-Source6:	SearchAMG.py
+#gw they lag behind and support 0.9.0 only
+#Source6:	SearchAMG.py
 ## actual URL http://wiki.musicbrainz.org/PicardQt/Plugins?action=AttachFile&do=get&target=SearchAMG.py
 
-Source10:	http://users.musicbrainz.org/~brianfreud/SearchDiscogs3.py
-Source11:	http://users.musicbrainz.org/~brianfreud/SearchAmazon3.py
-Source12:	http://users.musicbrainz.org/~brianfreud/SearchCastAlbums3.py
-Source13:	http://users.musicbrainz.org/~brianfreud/SearchFilmMusziek3.py
-Source14:	http://users.musicbrainz.org/~brianfreud/SearchGMR.py
-Source15:	http://users.musicbrainz.org/~brianfreud/SearchGoogle3.py
-Source16:	http://users.musicbrainz.org/~brianfreud/SearchLortelArchives3.py
-Source17:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackCollector3.py
-Source18:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackINFO3.py
+#Source10:	http://users.musicbrainz.org/~brianfreud/SearchDiscogs3.py
+#Source11:	http://users.musicbrainz.org/~brianfreud/SearchAmazon3.py
+#Source12:	http://users.musicbrainz.org/~brianfreud/SearchCastAlbums3.py
+#Source13:	http://users.musicbrainz.org/~brianfreud/SearchFilmMusziek3.py
+#Source14:	http://users.musicbrainz.org/~brianfreud/SearchGMR.py
+#Source15:	http://users.musicbrainz.org/~brianfreud/SearchGoogle3.py
+#Source16:	http://users.musicbrainz.org/~brianfreud/SearchLortelArchives3.py
+#Source17:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackCollector3.py
+#Source18:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackINFO3.py
 %py_requires -d
 BuildRequires:	gettext
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-qt4-core >= 4.3
-BuildRequires:	mutagen > 1.9
+BuildRequires:	mutagen > 1.11
 BuildRequires:	libofa-devel
 BuildRequires:	libexpat-devel
 BuildRequires:	libffmpeg-devel
@@ -65,7 +66,7 @@ env CFLAGS="%{optflags} -I%_includedir/libavcodec -I%_includedir/libavformat" %{
 %install
 rm -rf %{buildroot}
 %{__python} setup.py install -O1 --skip-build --root=%{buildroot}
- 
+install -D picard.desktop %buildroot%_datadir/applications/picard.desktop 
 sed -i -e 's/^Icon=%{name}-32.png$/Icon=%{name}-32/g' %{buildroot}%{_datadir}/applications/*
 
 desktop-file-install \
@@ -74,8 +75,7 @@ desktop-file-install \
 	%{buildroot}%{_datadir}/applications/*
 	
 mkdir -p %{buildroot}%{_datadir}/pixmaps
-install -pm 0644 %{buildroot}%{_datadir}/icons/picard-*.png %{buildroot}%{_datadir}/pixmaps/
-rm -rf %{buildroot}%{_datadir}/icons
+install -pm 0644 picard-*.png %{buildroot}%{_datadir}/pixmaps/
 
 %define PLUGINDIR %{buildroot}%{python_sitearch}/picard/plugins/
 
@@ -84,16 +84,16 @@ install -pm 0644 %{SOURCE2} %{PLUGINDIR}
 install -pm 0644 %{SOURCE3} %{PLUGINDIR}
 install -pm 0644 %{SOURCE4} %{PLUGINDIR}
 tar -xjf %{SOURCE5} -C %{PLUGINDIR}
-install -pm 0644 %{SOURCE6} %{PLUGINDIR}
-install -pm 0644 %{SOURCE10} %{PLUGINDIR}
-install -pm 0644 %{SOURCE11} %{PLUGINDIR}
-install -pm 0644 %{SOURCE12} %{PLUGINDIR}
-install -pm 0644 %{SOURCE13} %{PLUGINDIR}
-install -pm 0644 %{SOURCE14} %{PLUGINDIR}
-install -pm 0644 %{SOURCE15} %{PLUGINDIR}
-install -pm 0644 %{SOURCE16} %{PLUGINDIR}
-install -pm 0644 %{SOURCE17} %{PLUGINDIR}
-install -pm 0644 %{SOURCE18} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE6} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE10} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE11} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE12} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE13} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE14} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE15} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE16} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE17} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE18} %{PLUGINDIR}
 
 %find_lang %{name}
 
