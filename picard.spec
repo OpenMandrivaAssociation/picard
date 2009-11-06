@@ -1,7 +1,7 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
-Version:	0.11
-Release:	%mkrel 3
+Version:	0.12.1
+Release:	%mkrel 1
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
@@ -76,8 +76,6 @@ desktop-file-install \
 	--dir=%{buildroot}%{_datadir}/applications \
 	%{buildroot}%{_datadir}/applications/*
 	
-mkdir -p %{buildroot}%{_datadir}/pixmaps
-install -pm 0644 picard-*.png %{buildroot}%{_datadir}/pixmaps/
 
 %define PLUGINDIR %{buildroot}%{python_sitearch}/picard/plugins/
 
@@ -109,8 +107,7 @@ rm -rf %{buildroot}
 %doc AUTHORS.txt NEWS.txt INSTALL.txt
 %{_bindir}/picard
 %{_datadir}/applications/*.desktop
-%{_datadir}/pixmaps/*
-%_datadir/icons/*.png
+%_datadir/icons/hicolor/*/apps/picard.png
 %{python_sitearch}/*egg-info
 %dir %{python_sitearch}/picard
 %{python_sitearch}/picard/*
