@@ -1,14 +1,14 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
-Version:	0.12.1
-Release:	%mkrel 2
+Version:	0.14
+Release:	%mkrel 1
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
 Url:		http://musicbrainz.org/doc/PicardTagger
 Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/picard/%{name}-%{version}.tar.gz
 
-# plugins, 0.11 supports API 0.11 and 0.10
+# plugins, 0.14 supports API 0.10 up to 0.14
 Source1:	http://users.musicbrainz.org/~luks/picard-qt/plugins/discnumber.py
 Source2:	http://users.musicbrainz.org/~luks/picard-qt/plugins/featartist.py
 Source3:	http://users.musicbrainz.org/~luks/picard-qt/plugins/coverart.py
@@ -32,6 +32,7 @@ Source8:	http://foolip.org/mb/encoding.py
 #Source16:	http://users.musicbrainz.org/~brianfreud/SearchLortelArchives3.py
 #Source17:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackCollector3.py
 #Source18:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackINFO3.py
+Patch0:		picard-0.14-avutil-linking.patch
 %py_requires -d
 BuildRequires:	gettext
 BuildRequires:	desktop-file-utils
@@ -56,6 +57,7 @@ track-oriented.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
 env %{__python} setup.py config
