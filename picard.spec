@@ -1,6 +1,6 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
-Version:	0.14
+Version:	0.15
 Release:	%mkrel 1
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -8,16 +8,17 @@ License:	GPLv2+
 Url:		http://musicbrainz.org/doc/PicardTagger
 Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/picard/%{name}-%{version}.tar.gz
 
-# plugins, 0.14 supports API 0.10 up to 0.14
 Source1:	http://users.musicbrainz.org/~luks/picard-qt/plugins/discnumber.py
 Source2:	http://users.musicbrainz.org/~luks/picard-qt/plugins/featartist.py
 Source3:	http://users.musicbrainz.org/~luks/picard-qt/plugins/coverart.py
-Source4:	http://dispuut-ivv.nl/~jan/bonusdisc.py
+#gw old API:
+#Source4:	http://dispuut-ivv.nl/~jan/bonusdisc.py
 #http://users.musicbrainz.org/~luks/picard-qt/plugins/lastfm/
 Source5:	lastfm.tar.bz2
 Source6:	http://users.musicbrainz.org/~luks/picard-qt/plugins/addrelease.py
 Source7:	http://users.musicbrainz.org/~luks/picard-qt/plugins/cuesheet.py
-Source8:	http://foolip.org/mb/encoding.py
+#gw old API:
+#Source8:	http://foolip.org/mb/encoding.py
 # search plugins
 #gw they lag behind and support 0.9.0 only
 #Source6:	SearchAMG.py
@@ -56,7 +57,7 @@ database. The tagger is album or release oriented, rather than
 track-oriented.
 
 %prep
-%setup -q
+%setup -q -n %name-%version
 %apply_patches
 
 %build
@@ -84,11 +85,12 @@ desktop-file-install \
 install -pm 0644 %{SOURCE1} %{PLUGINDIR}
 install -pm 0644 %{SOURCE2} %{PLUGINDIR}
 install -pm 0644 %{SOURCE3} %{PLUGINDIR}
-install -pm 0644 %{SOURCE4} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE4} %{PLUGINDIR}
 tar -xjf %{SOURCE5} -C %{PLUGINDIR}
 install -pm 0644 %{SOURCE6} %{PLUGINDIR}
 install -pm 0644 %{SOURCE7} %{PLUGINDIR}
-install -pm 0644 %{SOURCE8} %{PLUGINDIR}
+#install -pm 0644 %{SOURCE8} %{PLUGINDIR}
+
 #install -pm 0644 %{SOURCE10} %{PLUGINDIR}
 #install -pm 0644 %{SOURCE11} %{PLUGINDIR}
 #install -pm 0644 %{SOURCE12} %{PLUGINDIR}
