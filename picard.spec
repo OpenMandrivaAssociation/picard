@@ -1,7 +1,7 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
 Version:	0.15
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
@@ -21,7 +21,7 @@ Source7:	http://users.musicbrainz.org/~luks/picard-qt/plugins/cuesheet.py
 #Source8:	http://foolip.org/mb/encoding.py
 # search plugins
 #gw they lag behind and support 0.9.0 only
-#Source6:	SearchAMG.py
+#Source9:	SearchAMG.py
 ## actual URL http://wiki.musicbrainz.org/PicardQt/Plugins?action=AttachFile&do=get&target=SearchAMG.py
 
 #Source10:	http://users.musicbrainz.org/~brianfreud/SearchDiscogs3.py
@@ -33,6 +33,11 @@ Source7:	http://users.musicbrainz.org/~luks/picard-qt/plugins/cuesheet.py
 #Source16:	http://users.musicbrainz.org/~brianfreud/SearchLortelArchives3.py
 #Source17:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackCollector3.py
 #Source18:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackINFO3.py
+#
+Source19: http://users.musicbrainz.org/~luks/picard-plugins/open_in_gui.py
+Source20: http://users.musicbrainz.org/~luks/picard-plugins/titlecase.py
+Source21: http://users.musicbrainz.org/~luks/picard-plugins/release_type.py
+Source22: http://users.musicbrainz.org/~luks/picard-plugins/featartistsintitles.py
 Patch0:		picard-0.14-avutil-linking.patch
 %py_requires -d
 BuildRequires:	gettext
@@ -100,6 +105,11 @@ install -pm 0644 %{SOURCE7} %{PLUGINDIR}
 #install -pm 0644 %{SOURCE16} %{PLUGINDIR}
 #install -pm 0644 %{SOURCE17} %{PLUGINDIR}
 #install -pm 0644 %{SOURCE18} %{PLUGINDIR}
+
+install -pm 0644 %{SOURCE19} %{PLUGINDIR}
+install -pm 0644 %{SOURCE20} %{PLUGINDIR}
+install -pm 0644 %{SOURCE21} %{PLUGINDIR}
+install -pm 0644 %{SOURCE22} %{PLUGINDIR}
 
 %find_lang %{name}
 
