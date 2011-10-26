@@ -1,6 +1,6 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
-Version:	0.15.1
+Version:	0.16
 Release:	%mkrel 1
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -38,6 +38,12 @@ Source19: http://users.musicbrainz.org/~luks/picard-plugins/open_in_gui.py
 Source20: http://users.musicbrainz.org/~luks/picard-plugins/titlecase.py
 Source21: http://users.musicbrainz.org/~luks/picard-plugins/release_type.py
 Source22: http://users.musicbrainz.org/~luks/picard-plugins/featartistsintitles.py
+# http://forums.musicbrainz.org/viewtopic.php?id=2949
+Source23: lastfmplus-0.13.zip
+Source24: http://users.musicbrainz.org/~luks/picard-plugins/classicdiscnumber.py
+Source25: http://users.musicbrainz.org/~luks/picard-plugins/swapprefix.py
+Source26: http://kalou.net/unix/picard/metaflac_rgscan.py
+Source27: http://users.musicbrainz.org/~luks/picard-plugins/no_release.py
 Patch0:		picard-0.14-avutil-linking.patch
 %py_requires -d
 BuildRequires:	gettext
@@ -54,6 +60,8 @@ Requires:	python-qt4-xml >= 4.3
 Requires:	python-sip
 Requires:	mutagen > 1.9
 Requires:	libdiscid
+#gw for metaflac:
+Suggests:	flac
 
 
 %description
@@ -110,6 +118,14 @@ install -pm 0644 %{SOURCE19} %{PLUGINDIR}
 install -pm 0644 %{SOURCE20} %{PLUGINDIR}
 install -pm 0644 %{SOURCE21} %{PLUGINDIR}
 install -pm 0644 %{SOURCE22} %{PLUGINDIR}
+
+unzip %{SOURCE23} -d %{PLUGINDIR}
+install -pm 0644 %{SOURCE24} %{PLUGINDIR}
+install -pm 0644 %{SOURCE25} %{PLUGINDIR}
+install -pm 0644 %{SOURCE26} %{PLUGINDIR}
+#gw fix metaflac path
+sed -i "s^/sw/bin/metaflac^/usr/bin/metaflac^" %{PLUGINDIR}/metaflac_rgscan.py
+install -pm 0644 %{SOURCE27} %{PLUGINDIR}
 
 %find_lang %{name}
 
