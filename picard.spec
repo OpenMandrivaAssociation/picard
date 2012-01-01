@@ -1,7 +1,7 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
 Version:	0.16
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
@@ -20,19 +20,16 @@ Source7:	http://users.musicbrainz.org/~luks/picard-qt/plugins/cuesheet.py
 #gw old API:
 #Source8:	http://foolip.org/mb/encoding.py
 # search plugins
-#gw they lag behind and support 0.9.0 only
-#Source9:	SearchAMG.py
-## actual URL http://wiki.musicbrainz.org/PicardQt/Plugins?action=AttachFile&do=get&target=SearchAMG.py
-
-#Source10:	http://users.musicbrainz.org/~brianfreud/SearchDiscogs3.py
-#Source11:	http://users.musicbrainz.org/~brianfreud/SearchAmazon3.py
-#Source12:	http://users.musicbrainz.org/~brianfreud/SearchCastAlbums3.py
-#Source13:	http://users.musicbrainz.org/~brianfreud/SearchFilmMusziek3.py
-#Source14:	http://users.musicbrainz.org/~brianfreud/SearchGMR.py
-#Source15:	http://users.musicbrainz.org/~brianfreud/SearchGoogle3.py
-#Source16:	http://users.musicbrainz.org/~brianfreud/SearchLortelArchives3.py
-#Source17:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackCollector3.py
-#Source18:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackINFO3.py
+Source9:	http://users.musicbrainz.org/~brianfreud/SearchAMG.py
+Source10:	http://users.musicbrainz.org/~brianfreud/SearchDiscogs3.py
+Source11:	http://users.musicbrainz.org/~brianfreud/SearchAmazon3.py
+Source12:	http://users.musicbrainz.org/~brianfreud/SearchCastAlbums3.py
+Source13:	http://users.musicbrainz.org/~brianfreud/SearchFilmMusziek3.py
+Source14:	http://users.musicbrainz.org/~brianfreud/SearchGMR.py
+Source15:	http://users.musicbrainz.org/~brianfreud/SearchGoogle3.py
+Source16:	http://users.musicbrainz.org/~brianfreud/SearchLortelArchives3.py
+Source17:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackCollector3.py
+Source18:	http://users.musicbrainz.org/~brianfreud/SearchSoundtrackINFO3.py
 #
 Source19: http://users.musicbrainz.org/~luks/picard-plugins/open_in_gui.py
 Source20: http://users.musicbrainz.org/~luks/picard-plugins/titlecase.py
@@ -44,6 +41,8 @@ Source24: http://users.musicbrainz.org/~luks/picard-plugins/classicdiscnumber.py
 Source25: http://users.musicbrainz.org/~luks/picard-plugins/swapprefix.py
 Source26: http://kalou.net/unix/picard/metaflac_rgscan.py
 Source27: http://users.musicbrainz.org/~luks/picard-plugins/no_release.py
+Source28: http://github.com/voiceinsideyou/creaps-picard-plugins/raw/master/titleversion.py
+Source29: http://github.com/voiceinsideyou/creaps-picard-plugins/raw/master/titlesort.py
 Patch0:		picard-0.14-avutil-linking.patch
 %py_requires -d
 BuildRequires:	gettext
@@ -104,15 +103,19 @@ install -pm 0644 %{SOURCE6} %{PLUGINDIR}
 install -pm 0644 %{SOURCE7} %{PLUGINDIR}
 #install -pm 0644 %{SOURCE8} %{PLUGINDIR}
 
-#install -pm 0644 %{SOURCE10} %{PLUGINDIR}
-#install -pm 0644 %{SOURCE11} %{PLUGINDIR}
-#install -pm 0644 %{SOURCE12} %{PLUGINDIR}
-#install -pm 0644 %{SOURCE13} %{PLUGINDIR}
-#install -pm 0644 %{SOURCE14} %{PLUGINDIR}
-#install -pm 0644 %{SOURCE15} %{PLUGINDIR}
-#install -pm 0644 %{SOURCE16} %{PLUGINDIR}
-#install -pm 0644 %{SOURCE17} %{PLUGINDIR}
-#install -pm 0644 %{SOURCE18} %{PLUGINDIR}
+install -pm 0644 %{SOURCE9} %{PLUGINDIR}
+install -pm 0644 %{SOURCE10} %{PLUGINDIR}
+install -pm 0644 %{SOURCE11} %{PLUGINDIR}
+install -pm 0644 %{SOURCE12} %{PLUGINDIR}
+install -pm 0644 %{SOURCE13} %{PLUGINDIR}
+install -pm 0644 %{SOURCE14} %{PLUGINDIR}
+install -pm 0644 %{SOURCE15} %{PLUGINDIR}
+install -pm 0644 %{SOURCE16} %{PLUGINDIR}
+install -pm 0644 %{SOURCE17} %{PLUGINDIR}
+install -pm 0644 %{SOURCE18} %{PLUGINDIR}
+#gw fix API versions:
+sed -i "s^\"0.10\"^\"%version\"^" %{PLUGINDIR}/Search*
+
 
 install -pm 0644 %{SOURCE19} %{PLUGINDIR}
 install -pm 0644 %{SOURCE20} %{PLUGINDIR}
@@ -126,6 +129,9 @@ install -pm 0644 %{SOURCE26} %{PLUGINDIR}
 #gw fix metaflac path
 sed -i "s^/sw/bin/metaflac^/usr/bin/metaflac^" %{PLUGINDIR}/metaflac_rgscan.py
 install -pm 0644 %{SOURCE27} %{PLUGINDIR}
+install -pm 0644 %{SOURCE28} %{PLUGINDIR}
+install -pm 0644 %{SOURCE29} %{PLUGINDIR}
+
 
 %find_lang %{name}
 
