@@ -1,22 +1,22 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
-Version:	0.16
-Release:	%mkrel 2
+Version:	1.0
+Release:	%mkrel 1
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
 Url:		http://musicbrainz.org/doc/PicardTagger
 Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/picard/%{name}-%{version}.tar.gz
 
-Source1:	http://users.musicbrainz.org/~luks/picard-qt/plugins/discnumber.py
-Source2:	http://users.musicbrainz.org/~luks/picard-qt/plugins/featartist.py
-Source3:	http://users.musicbrainz.org/~luks/picard-qt/plugins/coverart.py
+Source1:	http://users.musicbrainz.org/~luks/picard-plugins/discnumber.py
+Source2:	http://users.musicbrainz.org/~luks/picard-plugins/featartist.py
+Source3:	http://users.musicbrainz.org/~luks/picard-plugins/coverart.py
 #gw old API:
 #Source4:	http://dispuut-ivv.nl/~jan/bonusdisc.py
-#http://users.musicbrainz.org/~luks/picard-qt/plugins/lastfm/
+#http://users.musicbrainz.org/~luks/picard-plugins/lastfm/
 Source5:	lastfm.tar.bz2
-Source6:	http://users.musicbrainz.org/~luks/picard-qt/plugins/addrelease.py
-Source7:	http://users.musicbrainz.org/~luks/picard-qt/plugins/cuesheet.py
+Source6:	http://gitorious.org/musicbrainz/addrelease/blobs/raw/master/addrelease.py
+Source7:	http://users.musicbrainz.org/~luks/picard-plugins/cuesheet.py
 #gw old API:
 #Source8:	http://foolip.org/mb/encoding.py
 # search plugins
@@ -43,7 +43,9 @@ Source26: http://kalou.net/unix/picard/metaflac_rgscan.py
 Source27: http://users.musicbrainz.org/~luks/picard-plugins/no_release.py
 Source28: http://github.com/voiceinsideyou/creaps-picard-plugins/raw/master/titleversion.py
 Source29: http://github.com/voiceinsideyou/creaps-picard-plugins/raw/master/titlesort.py
-Patch0:		picard-0.14-avutil-linking.patch
+Source30: https://github.com/voiceinsideyou/picard/raw/plugins/contrib/plugins/removeperfectalbums.py
+Source31: https://raw.github.com/encukou/picard-plugins/master/autosave.py
+Patch0:		picard-1.0-avutil-linking.patch
 %py_requires -d
 BuildRequires:	gettext
 BuildRequires:	desktop-file-utils
@@ -131,6 +133,8 @@ sed -i "s^/sw/bin/metaflac^/usr/bin/metaflac^" %{PLUGINDIR}/metaflac_rgscan.py
 install -pm 0644 %{SOURCE27} %{PLUGINDIR}
 install -pm 0644 %{SOURCE28} %{PLUGINDIR}
 install -pm 0644 %{SOURCE29} %{PLUGINDIR}
+install -pm 0644 %{SOURCE30} %{PLUGINDIR}
+install -pm 0644 %{SOURCE31} %{PLUGINDIR}
 
 
 %find_lang %{name}
