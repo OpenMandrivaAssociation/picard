@@ -53,7 +53,7 @@ BuildRequires:	python-qt4-core >= 4.3
 BuildRequires:	mutagen > 1.11
 BuildRequires:	libofa-devel
 BuildRequires:	libexpat-devel
-BuildRequires:	libffmpeg-devel
+BuildRequires:	ffmpeg-devel
 Requires:	python-qt4-core >= 4.3
 Requires:	python-qt4-gui >= 4.3
 Requires:	python-qt4-network >= 4.3
