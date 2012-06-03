@@ -1,7 +1,7 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
 Version:	1.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
