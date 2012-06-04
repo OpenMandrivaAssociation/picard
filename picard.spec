@@ -1,7 +1,7 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
 Version:	1.0
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
@@ -45,6 +45,8 @@ Source28: http://github.com/voiceinsideyou/creaps-picard-plugins/raw/master/titl
 Source29: http://github.com/voiceinsideyou/creaps-picard-plugins/raw/master/titlesort.py
 Source30: https://github.com/voiceinsideyou/picard/raw/plugins/contrib/plugins/removeperfectalbums.py
 Source31: https://raw.github.com/encukou/picard-plugins/master/autosave.py
+#gw remove after 1.0:
+Source100: https://raw.github.com/musicbrainz/picard/master/po/de.po
 Patch0:		picard-1.0-avutil-linking.patch
 %py_requires -d
 BuildRequires:	gettext
@@ -73,6 +75,7 @@ track-oriented.
 %prep
 %setup -q -n %name-%version
 %apply_patches
+cp %SOURCE100 po/de.po
 
 %build
 env %{__python} setup.py config
