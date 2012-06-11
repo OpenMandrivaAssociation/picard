@@ -1,7 +1,7 @@
 Summary:	MusicBrainz-based audio tagger
 Name:		picard
 Version:	1.0
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		Sound
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPLv2+
@@ -65,6 +65,8 @@ Requires:	mutagen > 1.9
 Requires:	libdiscid
 #gw for metaflac:
 Suggests:	flac
+#gw for fpcalc (AcoustID calculation)
+Suggests:	chromaprint
 
 
 %description
