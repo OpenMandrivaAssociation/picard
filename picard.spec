@@ -48,6 +48,7 @@ Source31: https://raw.github.com/encukou/picard-plugins/master/autosave.py
 #gw remove after 1.0:
 Source100: https://raw.github.com/musicbrainz/picard/master/po/de.po
 Patch0:		picard-1.0-avutil-linking.patch
+Patch1:		picard-1.0-ffmpeg0.11.patch
 %py_requires -d
 BuildRequires:	gettext
 BuildRequires:	desktop-file-utils
