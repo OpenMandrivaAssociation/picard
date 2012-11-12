@@ -1,0 +1,11 @@
+--- picard-1.0/setup.py.0000~	2012-06-02 21:35:38.000000000 +0200
++++ picard-1.0/setup.py	2012-06-03 18:01:01.651027820 +0200
+@@ -372,7 +372,7 @@ class picard_config(config):
+ 
+         print 'checking for libavcodec/libavformat...',
+         if have_pkgconfig:
+-            if self.pkgconfig_check_module('avcodec', 'libavcodec libavformat'):
++            if self.pkgconfig_check_module('avcodec', 'libavcodec libavformat libavutil'):
+                 include_dirs = cflags_to_include_dirs(cfg.get('avcodec', 'cflags'))
+                 if not self.try_compile('#include <libavcodec/avcodec.h>', include_dirs=include_dirs):
+                     cfg.set('avcodec', 'cflags', cfg.get('avcodec', 'cflags') + ' -DUSE_OLD_FFMPEG_LOCATIONS')
