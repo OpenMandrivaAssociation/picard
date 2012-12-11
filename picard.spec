@@ -155,3 +155,152 @@ rm -rf %{buildroot}
 %{python_sitearch}/*egg-info
 %dir %{python_sitearch}/picard
 %{python_sitearch}/picard/*
+
+
+%changelog
+* Tue Sep 04 2012 Götz Waschk <waschk@mandriva.org> 1.1-1mdv2012.0
++ Revision: 816304
+- new version
+- drop patch 1
+- remove updated German translation
+- update Search plugins
+
+* Mon Jun 11 2012 Götz Waschk <waschk@mandriva.org> 1.0-4
++ Revision: 804397
+- add patch for ffmpeg 0.11
+- suggest chromaprint for audio fingerprinting
+
+* Mon Jun 04 2012 Götz Waschk <waschk@mandriva.org> 1.0-3
++ Revision: 802439
+- fix broken German translation
+
+* Sun Jun 03 2012 Götz Waschk <waschk@mandriva.org> 1.0-2
++ Revision: 802174
+- rebuild
+- fix build deps
+- new version
+- update the patch
+- update featartist, metaflac, coverart, featartistintitles plugins
+- add removeperfectalbums and autosave plugins
+
+* Sun Jan 01 2012 Götz Waschk <waschk@mandriva.org> 0.16-2
++ Revision: 748606
+- add more plugins
+
+* Wed Oct 26 2011 Götz Waschk <waschk@mandriva.org> 0.16-1
++ Revision: 707227
+- new version
+- add new plugins:
+  * Last.fm.Plus
+  * Classic Disc Numbers
+  * MetaFlac ReplayGain
+  * No release
+  * swapprefix function
+- suggest flac for metaflac plugin
+- new version
+
+* Fri Jul 22 2011 Götz Waschk <waschk@mandriva.org> 0.15-2
++ Revision: 690917
+- add new version of addrelease plugin
+- add new plugins: Open in GUI, Title Case, Release Type, feat. in title
+
+* Thu Jul 21 2011 Götz Waschk <waschk@mandriva.org> 0.15-1
++ Revision: 690846
+- new version
+- update plugins
+- disable outdated plugins (encoding, bonus disk)
+
+* Tue May 24 2011 Götz Waschk <waschk@mandriva.org> 0.14-1
++ Revision: 678125
+- new version
+- patch to fix linking
+
+* Mon Nov 01 2010 Götz Waschk <waschk@mandriva.org> 0.12.1-2mdv2011.0
++ Revision: 591470
+- rebuild for new python 2.7
+
+* Fri Nov 06 2009 Götz Waschk <waschk@mandriva.org> 0.12.1-1mdv2011.0
++ Revision: 460729
+- new version
+- update file list
+
+* Tue Sep 15 2009 Thierry Vignaud <tv@mandriva.org> 0.11-3mdv2010.0
++ Revision: 441782
+- rebuild
+
+* Sun Dec 28 2008 Götz Waschk <waschk@mandriva.org> 0.11-2mdv2009.1
++ Revision: 320490
+- rebuild for new python
+
+* Thu Dec 04 2008 Götz Waschk <waschk@mandriva.org> 0.11-1mdv2009.1
++ Revision: 309982
+- new version
+- add some new plugins
+
+* Thu Oct 16 2008 Götz Waschk <waschk@mandriva.org> 0.10-3mdv2009.1
++ Revision: 294374
+- rebuild for new libdiscid
+
+* Fri Aug 08 2008 Thierry Vignaud <tv@mandriva.org> 0.10-2mdv2009.0
++ Revision: 268965
+- rebuild early 2009.0 package (before pixel changes)
+
+* Fri Aug 08 2008 Götz Waschk <waschk@mandriva.org> 0.10-1mdv2009.0
++ Revision: 268040
+- new version
+- update plugins (sources 1-5)
+- drop plugins (sources 6-18)
+- update deps
+
+* Wed Apr 30 2008 Götz Waschk <waschk@mandriva.org> 0.9.0-6mdv2009.0
++ Revision: 199392
+- fix build with new ffmpeg
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - fix no-buildroot-tag
+
+* Wed Jan 02 2008 Götz Waschk <waschk@mandriva.org> 0.9.0-5mdv2008.1
++ Revision: 140410
+- rebuild for new ffmpeg
+
+* Fri Dec 28 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 0.9.0-4mdv2008.1
++ Revision: 138712
+- add missing python-qt4-* requires
+- add libffmpeg as a buildrequire - this should allow to calculate audio files fingerprints
+
+* Thu Dec 27 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 0.9.0-3mdv2008.1
++ Revision: 138631
+- fix instalation of additional plugins
+
+* Thu Dec 27 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 0.9.0-2mdv2008.1
++ Revision: 138575
+- do not require whole python-qt4 packages, only core one is needed
+
+* Thu Dec 27 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 0.9.0-1mdv2008.1
++ Revision: 138236
+- rewrite whole spec file
+- add missing buildrequires, remove not needed ones
+- compile with optflags
+- new license policy
+- add some plugins
+- new version
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Fri May 11 2007 Götz Waschk <waschk@mandriva.org> 0.7.2-3mdv2008.0
++ Revision: 26222
+- use wxpython2.6
+
+
+* Wed Nov 29 2006 Götz Waschk <waschk@mandriva.org> 0.7.2-2mdv2007.0
++ Revision: 88386
+- update file list
+
+* Sat Nov 25 2006 Götz Waschk <waschk@mandriva.org> 0.7.2-1mdv2007.1
++ Revision: 87254
+- Import picard
+
+* Sat Nov 25 2006 Götz Waschk <waschk@mandriva.org> 0.7.2-1mdv2007.1
+- initial package
+
