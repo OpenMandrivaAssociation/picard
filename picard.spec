@@ -1,10 +1,10 @@
 Summary:	The official MusicBrainz tagger
 Name:		picard
-Version:	1.2
-Release:	2
+Version:	2.8.3
+Release:	1
 License:	GPLv2+
 Group:		Sound
-Url:		http://musicbrainz.org/doc/MusicBrainz_Picard
+Url:		http://picard.musicbrainz.org/
 Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/picard/%{name}-%{version}.tar.gz
 # Plugins:
 Source1:	http://users.musicbrainz.org/~luks/picard-plugins/classicdiscnumber.py
@@ -16,10 +16,6 @@ Source6:	http://users.musicbrainz.org/~luks/picard-plugins/open_in_gui.py
 Source7:	http://users.musicbrainz.org/~luks/picard-plugins/swapprefix.py
 Source8:	http://users.musicbrainz.org/~luks/picard-plugins/titlecase.py
 Source9:	http://users.musicbrainz.org/~luks/picard-plugins/tracks2clipboard.py
-# lastfm plugin
-Source10:	http://users.musicbrainz.org/~luks/picard-plugins/lastfm/lastfm__init__.py
-Source11:	http://users.musicbrainz.org/~luks/picard-plugins/lastfm/options_lastfm.ui
-Source12:	http://users.musicbrainz.org/~luks/picard-plugins/lastfm/ui_options_lastfm.py
 # replaygain plugin
 Source13:	http://users.musicbrainz.org/~luks/picard-plugins/replaygain/__init__.py
 Source14:	http://users.musicbrainz.org/~luks/picard-plugins/replaygain/options_replaygain.ui
@@ -32,8 +28,8 @@ Source20:	http://github.com/voiceinsideyou/creaps-picard-plugins/raw/master/titl
 Source21:	http://github.com/voiceinsideyou/creaps-picard-plugins/raw/master/titlesort.py
 Source22:	https://github.com/voiceinsideyou/picard/raw/plugins/contrib/plugins/removeperfectalbums.py
 Source23:	https://raw.github.com/encukou/picard-plugins/master/autosave.py
-# http://forums.musicbrainz.org/viewtopic.php?id=2949
-Source24:	lastfmplus-0.13.zip
+# https://musicbrainz.org/doc/MusicBrainz_Picard/Documentation/Plugins/Lastfmplus
+Source24:	https://picard.musicbrainz.org/api/v2/download?id=lastfm#/lastfm.zip
 # search plugins https://github.com/brianfreud/Picard-plugins
 Source25:	https://raw.github.com/brianfreud/Picard-plugins/master/SearchAMG.py
 Source26:	https://raw.github.com/brianfreud/Picard-plugins/master/SearchDiscogs3.py
@@ -51,7 +47,6 @@ BuildRequires:	mutagen
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(libdiscid)
 Requires:	mutagen
-Requires:	python-qt4
 Requires:	%{mklibname discid 0}
 #gw for fpcalc (AcoustID calculation)
 Requires:	chromaprint
@@ -78,15 +73,14 @@ Picard is named after Captain Jean-Luc Picard from the TV series Star Trek: The
 Next Generation.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1 -n %{name}-release-%{version}
+python setup.py config
 
 %build
-python setup.py config
-python setup.py build
+%py_build
 
 %install
-python setup.py install --root=%{buildroot}
+%py_install
 
 PLUGINDIR=%{buildroot}%{python_sitearch}/picard/plugins/
 install -m 0644 %{SOURCE1} ${PLUGINDIR}
@@ -98,10 +92,6 @@ install -m 0644 %{SOURCE6} ${PLUGINDIR}
 install -m 0644 %{SOURCE7} ${PLUGINDIR}
 install -m 0644 %{SOURCE8} ${PLUGINDIR}
 install -m 0644 %{SOURCE9} ${PLUGINDIR}
-mkdir -p ${PLUGINDIR}/lastfm
-install -m 0644 %{SOURCE10} ${PLUGINDIR}/lastfm/__init__.py
-install -m 0644 %{SOURCE11} ${PLUGINDIR}/lastfm/
-install -m 0644 %{SOURCE12} ${PLUGINDIR}/lastfm/
 mkdir -p ${PLUGINDIR}/replaygain
 install -m 0644 %{SOURCE13} ${PLUGINDIR}/replaygain/__init__.py
 install -m 0644 %{SOURCE14} ${PLUGINDIR}/replaygain/
@@ -127,12 +117,12 @@ install -m 0644 %{SOURCE33} ${PLUGINDIR}
 install -m 0644 %{SOURCE34} ${PLUGINDIR}
 install -m 0644 %{SOURCE35} ${PLUGINDIR}
 
-%find_lang %{name}
+%find_lang %{name} --all-name
 
 %files -f %{name}.lang
-%doc AUTHORS.txt COPYING.txt INSTALL.txt NEWS.txt
+%doc AUTHORS.txt COPYING.txt
 %{_bindir}/%{name}
+%{_datadir}/applications/org.musicbrainz.Picard.desktop
+%{_datadir}/metainfo/org.musicbrainz.Picard.appdata.xml
 %{python_sitearch}/*
-%{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*
-
