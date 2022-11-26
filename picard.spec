@@ -1,6 +1,6 @@
 Summary:	The official MusicBrainz tagger
 Name:		picard
-Version:	2.8.3
+Version:	2.8.4
 Release:	1
 License:	GPLv2+
 Group:		Sound
