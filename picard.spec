@@ -4,7 +4,7 @@ Version:	2.9
 Release:	1
 License:	GPLv2+
 Group:		Sound
-Url:		http://picard.musicbrainz.org/
+Url:		https://picard.musicbrainz.org/
 Source0:	http://ftp.musicbrainz.org/pub/musicbrainz/picard/%{name}-%{version}.tar.gz
 # Plugins:
 Source1:	http://users.musicbrainz.org/~luks/picard-plugins/classicdiscnumber.py
