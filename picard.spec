@@ -1,11 +1,23 @@
-Summary:	The official MusicBrainz tagger
-Name:		picard
-Version:	2.13.2
-Release:	1
-License:	GPLv2+
-Group:		Sound
-Url:		https://picard.musicbrainz.org/
-Source0:	https://data.musicbrainz.org/pub/musicbrainz/%name/%name-%version.tar.gz
+# set to nil when packaging a release, 
+# or the long commit tag for the specific git branch
+%global commit_tag 14005d0429f807247d085f630aa73372dc43a13d
+
+Summary:	      The official MusicBrainz tagger
+Name:		       picard
+Version:	      3.0.0
+# When using a commit_tag (i.e. not %{nil}) add a commit date 
+# decoration ~0.yyyyMMdd. to Release number
+Release:	      ~0.20250214.1
+License:	      GPLv2+
+Group:		      Sound
+Url:		        https://picard.musicbrainz.org/
+#Source0:	      https://data.musicbrainz.org/pub/musicbrainz/%name/%name-%version.tar.gz
+# change the source URL depending on if the package is a release version or a git version
+%if "%{commit_tag}" != "%{nil}"
+Source0:        https://github.com/metabrainz/picard/archive/%{commit_tag}.tar.gz#/%name-%version.%release.tar.gz
+%else
+Source0:        https://github.com/<org_name>/<project_name>/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+%endif
 
 BuildSystem:    python
 
@@ -13,15 +25,26 @@ BuildRequires:	mutagen
 BuildRequires:	pkgconfig(libdiscid)
 BuildRequires:  pkgconfig(python)
 BuildRequires:  gettext
-Requires:	mutagen
-Requires:	%{mklibname discid 0}
+
+Requires:       %{_lib}xcb-cursor0
+Requires:	     mutagen
+Requires:       python-fasteners
+Requires:       python-markdown
+Requires:       python-pyjwt 
+Requires:       python-libdiscid
+Requires:       python-dateutil 
+Requires:       python-pyyaml
+Requires:       python-qt6
+Requires:	     %{mklibname discid 0}
 #gw for fpcalc (AcoustID calculation)
-Requires:	chromaprint
+Recommends:	     chromaprint
 #gw for metaflac:
-Suggests:	flac
+Suggests:	     flac
 #gw for wvgain:
-Suggests:	wavpack
-Suggests:	mp3gain
+Suggests:	     wavpack
+Suggests:	     mp3gain
+
+AutoReq:        no
 
 %description
 MusicBrainz Picard is the official MusicBrainz tagger, written in Python.
